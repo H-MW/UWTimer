@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYDWH2JQ11"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DYDWH2JQ11');
+    </script>
+    
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EGTimer</title>
+    <link rel="icon" href="./Icons/favicon.png">
+    <link rel="stylesheet" href="./css/timer-design.css" />
+    
+    <!-- PWA化 -->
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="EGTimer-icon" sizes="180x180" href="./Icons/icon-192x192.png">
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/color-name/sw.js').then(function(registration) {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(err) {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+          });
+        }
+      </script>
+</head>
+<body>
+
+    <!-- タイマー表示 -->
+    <div id="timer">00:00</div>
+    <audio id="siren" src="./Sounds/siren.mp3"></audio>
+    <audio id="bom" src="./Sounds/bom.mp3"></audio>
+
+    <script src="./js/timer-system.js"></script>
+
+</body>
+</html>
