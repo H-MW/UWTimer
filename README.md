@@ -1,4 +1,4 @@
-# UWWebTimer
+# Usual Web Timer
 このタイマーは普段の生活をより快適にするために制作されました。
 
 ## 使い方
