@@ -1,4 +1,9 @@
-./css/
-./js/
-./Sounds/
-./Icons/
+timer-system.js
+timer-design.js
+bom.mp3
+siren.mp3
+favicon.png
+icon-192x192.png
+icon-256x256.png
+icon-384x384.png
+icon-512x512.png
