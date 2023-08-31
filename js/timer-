@@ -1,40 +1,40 @@
-////////////////////////////’è‹`“™///////////////////////////////////////////
+////////////////////////////å®šç¾©ç­‰///////////////////////////////////////////
 
-//‰EƒNƒŠƒbƒNƒƒjƒ…[‚Ì–³Œø‰»
+//å³ã‚¯ãƒªãƒƒã‚¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ç„¡åŠ¹åŒ–
 document.oncontextmenu = function () { return false; }
 
-// HTML‚Ìæ“¾
+// HTMLã®å–å¾—
 const timer = document.getElementById("timer");
 const siren = document.getElementById("siren");
 const bom = document.getElementById("bom");
 
-//ƒL[“ü—Í‚ğ”F¯
+//ã‚­ãƒ¼å…¥åŠ›ã‚’èªè­˜
 document.addEventListener('keypress', keypress_ivent);
 
-//ƒXƒ^[ƒg‚Ì‚Ì
+//ã‚¹ã‚¿ãƒ¼ãƒˆæ™‚ã®ã®æ™‚åˆ»
 var startTime;
 
-//c‚èŠÔ‚ÌŒvZ•Ï”
+//æ®‹ã‚Šæ™‚é–“ã®è¨ˆç®—å¤‰æ•°
 var timeleft;
 
-// Œ»İ‚Æ•\¦Œ`®‚ğ‡‚í‚¹‚é‚½‚ß‚É * 1000
+// ç¾åœ¨æ™‚åˆ»ã¨è¡¨ç¤ºå½¢å¼ã‚’åˆã‚ã›ã‚‹ãŸã‚ã« * 1000
 var timeToCountDown = 0;
 
-//ŠÖ”countDown—p
+//é–¢æ•°countDownç”¨
 var timerId;
 
-//ƒJƒEƒ“ƒgƒ_ƒEƒ“ó‘ÔŠm”F
+//ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³çŠ¶æ…‹ç¢ºèª
 var isRunning = stop;
 
-//Å‰g‚¤‚½‚ßæ‚É’è‹`
+//æœ€åˆä½¿ã†ãŸã‚å…ˆã«å®šç¾©
 let m;
 let s;
 
-//ƒTƒCƒŒƒ“‚Æ”š’e‚ğÄ¶‚·‚é‚½‚ß
-var sirenCount = 0;   //ƒoƒO‰ñ”ğ
+//ã‚µã‚¤ãƒ¬ãƒ³ã¨çˆ†å¼¾ã‚’å†ç”Ÿã™ã‚‹ãŸã‚
+var sirenCount = 0;   //ãƒã‚°å›é¿
 
 
-//ƒ^ƒbƒv”F¯—p
+//ã‚¿ãƒƒãƒ—èªè­˜ç”¨
 let touch = false;
 let longtap = false;
 var touchTimer;
@@ -42,10 +42,10 @@ var touchTimer;
 
 
 
-//////////////////////////////ˆ—//////////////////////////////////////////
+//////////////////////////////å‡¦ç†//////////////////////////////////////////
 
-var timeSettingMin = prompt("Enter measurement time (min)","0")   //ƒ_ƒCƒAƒƒO‚Å•ª‚ğ“ü—Í
-//ƒoƒO‰ñ”ğ
+var timeSettingMin = prompt("Enter measurement time (min)","0")   //ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§åˆ†ã‚’å…¥åŠ›
+//ãƒã‚°å›é¿
 if (timeSettingMin >= 60) {
 	alert("Error. Please reload!");
 	timeSettingMin = 0;
@@ -53,8 +53,8 @@ if (timeSettingMin >= 60) {
 	timeSettingMin = 0;
 }
 
-var timeSettingSec = prompt("Enter measurement time (sec)","0")   //ƒ_ƒCƒAƒƒO‚Å•b‚ğ“ü—Í
-//ƒoƒO‰ñ”ğ
+var timeSettingSec = prompt("Enter measurement time (sec)","0")   //ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§ç§’ã‚’å…¥åŠ›
+//ãƒã‚°å›é¿
 if (timeSettingSec >= 60) {
 	alert("Error. Please reload!");
 	timeSettingSec = 0;
@@ -67,28 +67,28 @@ displayTimeSetting();
 
 
 
-//////////////////////////////ŠÖ”////////////////////////////////////////
+//////////////////////////////é–¢æ•°////////////////////////////////////////
 
 
-//“ü—Í‚µ‚½•ª‚â•b‚ğ•\¦‚µAƒ^ƒCƒ}[‚ğİ’è‚·‚é
+//å…¥åŠ›ã—ãŸåˆ†ã‚„ç§’ã‚’è¡¨ç¤ºã—ã€ã‚¿ã‚¤ãƒãƒ¼ã‚’è¨­å®šã™ã‚‹
 function displayTimeSetting() {
 
-	//ƒŠƒZƒbƒg
+	//ãƒªã‚»ãƒƒãƒˆ
 	timer.style.color = '';
 	m = timeSettingMin;
 	s = timeSettingSec;
 	sirenCount = 0;
 	siren.currentTime = 0;
 
-	//01:01‚È‚Ç‚Ì•\‹L‚É‘Î‰‚·‚é
+	//01:01ãªã©ã®è¡¨è¨˜ã«å¯¾å¿œã™ã‚‹
 	m = ('0' + m).slice(-2);
 	s = ('0' + s).slice(-2);
 
-	//•\¦‚·‚é
+	//è¡¨ç¤ºã™ã‚‹
 	timer.textContent = m + ":" + s;
 	document.title = m + ":" + s;
 	
-	//timeToCountDown—p‚ÌŒ`®‚É•Ï‚¦‚Ä‘ã“ü
+	//timeToCountDownç”¨ã®å½¢å¼ã«å¤‰ãˆã¦ä»£å…¥
 	timeToCountDown = m * 60 * 1000 + s * 1000 + 999;
 	timeleft = timeToCountDown;
 
@@ -96,35 +96,35 @@ function displayTimeSetting() {
 }
 
 
-//ƒ~ƒŠ•b‚ğ•ª‚Æ•b‚É’¼‚·
+//ãƒŸãƒªç§’ã‚’åˆ†ã¨ç§’ã«ç›´ã™
 function updateTimer(milliSecond) {
 
 	let d = new Date(milliSecond);
-	let m = d.getMinutes(); // •ª‚ğæ“¾
-	let s = d.getSeconds(); // •b‚ğæ“¾
+	let m = d.getMinutes(); // åˆ†ã‚’å–å¾—
+	let s = d.getSeconds(); // ç§’ã‚’å–å¾—
 
-	//01:01‚È‚Ç‚Ì•\‹L‚É‘Î‰‚·‚é
+	//01:01ãªã©ã®è¡¨è¨˜ã«å¯¾å¿œã™ã‚‹
 	m = ('0' + m).slice(-2);
     s = ('0' + s).slice(-2);
 	
-	//•\¦‚·‚é
+	//è¡¨ç¤ºã™ã‚‹
 	timer.textContent = m + ":" + s;
 	document.title = m + ":" + s;
 }
 
 
-//ƒJƒEƒ“ƒgƒ_ƒEƒ“
+//ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³
 function countDown() {
 
-	//10ƒ~ƒŠ•bŒã‚ÉŒJ‚è•Ô‚µÀs‚·‚é
+	//10ãƒŸãƒªç§’å¾Œã«ç¹°ã‚Šè¿”ã—å®Ÿè¡Œã™ã‚‹
 	timerId = setTimeout(function () {
 
 
-		// c‚èŠÔ = ƒJƒEƒ“ƒg‚³‚ê‚éŠÔ - (Œ»İ - ƒXƒ^[ƒg‚ÌŠÔ)
+		// æ®‹ã‚Šæ™‚é–“ = ã‚«ã‚¦ãƒ³ãƒˆã•ã‚Œã‚‹æ™‚é–“ - (ç¾åœ¨æ™‚åˆ» - ã‚¹ã‚¿ãƒ¼ãƒˆæ™‚ã®æ™‚é–“)
 		timeleft = timeToCountDown - (Date.now() - startTime);
 
 
-		//c‚èŠÔ‚ªÀ¿0‚É‚È‚Á‚½‚Ìˆ—
+		//æ®‹ã‚Šæ™‚é–“ãŒå®Ÿè³ª0ã«ãªã£ãŸæ™‚ã®å‡¦ç†
 		if (timeleft < 1000) {
 
 			if (timeSettingMin == 0 && timeSettingSec <= 10) {
@@ -143,7 +143,7 @@ function countDown() {
 			return;
 		}
 
-		//countDown‚ğ‚à‚¤ˆê“xŒÄ‚Ño‚·
+		//countDownã‚’ã‚‚ã†ä¸€åº¦å‘¼ã³å‡ºã™
 		updateTimer(timeleft);
 		countDown();
 
@@ -170,7 +170,7 @@ function countDown() {
 
 
 
-///////////////////////‘€ì‚É‚æ‚éˆ—///////////////////////////////
+///////////////////////æ“ä½œã«ã‚ˆã‚‹å‡¦ç†///////////////////////////////
 
 
 timer.addEventListener("touchstart", () => {
@@ -220,10 +220,10 @@ timer.addEventListener("touchend", () => {
 		} else if (isRunning == true) {
 			isRunning = stop;
 
-			//TimeToCountDown‚ÌXV
+			//TimeToCountDownã®æ›´æ–°
 			timeToCountDown = timeleft;
 
-			//ƒJƒEƒ“ƒg‚ğ~‚ß‚é
+			//ã‚«ã‚¦ãƒ³ãƒˆã‚’æ­¢ã‚ã‚‹
 			clearTimeout(timerId);
 
 			if (sirenCount === 1 && timeleft < 11000) {
@@ -245,10 +245,10 @@ timer.addEventListener("touchend", () => {
 
 
 
-//ƒL[‚ğ‰Ÿ‚³‚ê‚½‚Ìˆ—
+//ã‚­ãƒ¼ã‚’æŠ¼ã•ã‚ŒãŸæ™‚ã®å‡¦ç†
 function keypress_ivent(e) {
 
-	//SpaceƒL[‚ª‰Ÿ‚³‚ê‚½‚Ìˆ—(ƒXƒ^[ƒgƒXƒgƒbƒv)
+	//Spaceã‚­ãƒ¼ãŒæŠ¼ã•ã‚ŒãŸæ™‚ã®å‡¦ç†(ã‚¹ã‚¿ãƒ¼ãƒˆã‚¹ãƒˆãƒƒãƒ—)
 	if (e.code === 'Space') {
 
 		if (isRunning == stop) {
@@ -266,10 +266,10 @@ function keypress_ivent(e) {
 		} else if (isRunning == true) {
 			isRunning = stop;
 
-			//TimeToCountDown‚ÌXV
+			//TimeToCountDownã®æ›´æ–°
 			timeToCountDown = timeleft;
 
-			//ƒJƒEƒ“ƒg‚ğ~‚ß‚é
+			//ã‚«ã‚¦ãƒ³ãƒˆã‚’æ­¢ã‚ã‚‹
 			clearTimeout(timerId);
 			if (sirenCount === 1 && timeleft < 11000) {
 				siren.pause();
@@ -283,7 +283,7 @@ function keypress_ivent(e) {
 
 	}
 
-	//EnterƒL[‚ª‰Ÿ‚³‚ê‚½‚Ìˆ—(ƒŠƒZƒbƒg)
+	//Enterã‚­ãƒ¼ãŒæŠ¼ã•ã‚ŒãŸæ™‚ã®å‡¦ç†(ãƒªã‚»ãƒƒãƒˆ)
 	if (e.code === 'Enter') {
 
 		if (isRunning === true) {
