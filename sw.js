@@ -1,6 +1,5 @@
 var CACHE_NAME = 'EGTimer';
 var urlsToCache = [
-    'index.html',
     './js/timer-system.js',
     './css/timer-design.css',
 ];
