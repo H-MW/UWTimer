@@ -18,7 +18,17 @@
     <title>EGTimer</title>
     <link rel="icon" href="./Icons/favicon.png">
     <link rel="stylesheet" href="./css/timer-design.css" />
-    
+</head>
+<body>
+
+    <!-- タイマー表示 -->
+    <div id="timer">00:00</div>
+    <audio id="siren" src="./Sounds/siren.mp3"></audio>
+    <audio id="bom" src="./Sounds/bom.mp3"></audio>
+
+    <script src="./js/timer-system.js"></script>
+
+</body>
     <!-- PWA化 -->
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="EGTimer-icon" sizes="180x180" href="./Icons/icon-192x192.png">
@@ -33,15 +43,4 @@
           });
         }
       </script>
-</head>
-<body>
-
-    <!-- タイマー表示 -->
-    <div id="timer">00:00</div>
-    <audio id="siren" src="./Sounds/siren.mp3"></audio>
-    <audio id="bom" src="./Sounds/bom.mp3"></audio>
-
-    <script src="./js/timer-system.js"></script>
-
-</body>
 </html>
