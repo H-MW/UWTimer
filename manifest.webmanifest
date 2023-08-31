@@ -3,7 +3,7 @@
     "background_color": "#f69435",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/EGWebTimer",
+    "start_url": "./index.html",
     "name": "EGWebTimer",
     "short_name": "EGTimer",
     "description": "Timer for EscapeGames",
